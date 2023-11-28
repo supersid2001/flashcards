@@ -23,6 +23,9 @@ function Signin() {
         }
         localStorage.setItem('username', username);
         localStorage.setItem('password', password);
+        //TODO: RETRIVE USERNAME AND PASSWORD 
+        //TODO: HANDLE ANY ERRORS
+        //TODO: SET LOCALSTORAGE ID FROM DATA
         router.push('/'); 
       };
 

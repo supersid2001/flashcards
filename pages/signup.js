@@ -21,6 +21,7 @@ function Signup() {
           alert("Please fill in password");
           return;
         }
+        //TODO: ADD IN LOGIC FOR MONGODB + API CALL TO CREATE CLIENT
         router.push('/'); 
       };
 

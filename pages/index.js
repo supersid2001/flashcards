@@ -16,7 +16,7 @@ const Home = () => {
     useEffect(() => {
       console.log(localStorage.getItem('id'))
       if (!localStorage.getItem('id')) {
-        router.push('/login'); 
+        router.push('/home'); 
         return;
       } else {
       getData().then((translationHistory) => {
