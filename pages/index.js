@@ -25,8 +25,8 @@ const Home = () => {
         setFlashcards(prevFlashcards => [
           ...prevFlashcards,
           ...data.translationData.map((entry, index) => ({
-            term: entry.inputText,
-            definition: entry.outputText,
+            term: entry.outputText,
+            definition: entry.inputText,
             id: index + 1, 
           })),
         ]);
