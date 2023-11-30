@@ -2,7 +2,7 @@ import styles from "../styles/Home.module.css";
 
 import { useState, useEffect, useRef } from "react";
 
-//ADD HERE: GET NEW INPUT, ADD IT TO DB, ADD A FLASHCARD FROM OUTPUT 
+ 
 const AddFlashcard = ({ onAdd, onClose }) => {
   const [term, setTerm] = useState("");
   const [langTo, setLangTo] = useState("spa");
@@ -43,8 +43,6 @@ const AddFlashcard = ({ onAdd, onClose }) => {
       return;
     }
     else if(!image){
-      //TODO CHANGE CALL
-      //var result = await fetch("http://localhost:18080/post_translation_to_client/?tbt=" + term+"&tl=" + "langTo" + "&fl=" + langFrom + "&id=" + localStorage.getItem('id'))
       var link = "http://localhost:18080/post_translation_to_client/?tbt=" + term + "&tl=" + langTo + "&fl=" + langFrom + "&id=" + localStorage.getItem('id')
       fetch(link, {
         method: 'POST'
@@ -52,13 +50,10 @@ const AddFlashcard = ({ onAdd, onClose }) => {
         result.json().then((resJSON) => {
           console.log(resJSON)
           var definition = resJSON.textToBeTranslated
-          // onAdd(term, definition);
           onAdd({ term: resJSON.translatedText || "", definition: definition});
         })
       })
     } else {
-      //TODO CHANGE CALL
-      //var result = await fetch("http://localhost:18080/post_translation_to_client/?tbt=" + term+"&tl=" + "langTo" + "&fl=" + langFrom + "&id=" + localStorage.getItem('id'))
       var link = "http://localhost:18080/post_image_translation/?&tl=" + langTo + "&fl=" + langFrom + "&id=" + localStorage.getItem('id')
       const formData = new FormData()
       formData.append('file', image);
@@ -70,7 +65,6 @@ const AddFlashcard = ({ onAdd, onClose }) => {
         result.json().then((resJSON) => {
           console.log(resJSON)
           var definition = resJSON.textToBeTranslated
-          // onAdd(term, definition);
           onAdd({ term: resJSON.translatedText || "", definition: definition});
         })
       })
@@ -111,13 +105,6 @@ const AddFlashcard = ({ onAdd, onClose }) => {
         </label>
         <label className={styles.label}>
           Language to:
-          {/* <input
-            type="text"
-            value={langTo}
-            onChange={(e) => setLangTo(e.target.value)}
-            placeholder="Enter language translating to"
-            className={styles.input}
-          /> */}
           <select id="langToSelect" onChange={handleLangToChange} value={langTo}>
             <option value="en">English</option>
             <option value="spa">Spanish</option>
@@ -126,13 +113,6 @@ const AddFlashcard = ({ onAdd, onClose }) => {
         </label>
         <label className={styles.label}>
           Language from:
-          {/* <input
-            type="text"
-            value={langFrom}
-            onChange={(e) => setLangFrom(e.target.value)}
-            placeholder="Enter language translating from"
-            className={styles.input}
-          /> */}
           <select id="langFromSelect" onChange={handleLangFromChange} value={langFrom}>
             <option value="en">English</option>
             <option value="spa">Spanish</option>
