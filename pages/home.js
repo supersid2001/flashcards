@@ -14,7 +14,7 @@ function Home() {
     return (
         <div>
         <header>
-            <h1>Welcome to Drop Table Team's translator</h1>
+            <h1>Welcome to Drop Table Team&apos;s translator</h1>
         </header>
         <div>
             <button id="signinButton" className="button" onClick={handleSignInButtonClick}>

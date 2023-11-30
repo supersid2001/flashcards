@@ -39,7 +39,7 @@ function Signup() {
     return (
         <div>
             <header>
-                <h1>Welcome to Drop Table Team's translator</h1>
+                <h1>Welcome to Drop Table Team&apos;s translator</h1>
             </header>
             <div className="sign">
                 <h3>Sign up</h3>
