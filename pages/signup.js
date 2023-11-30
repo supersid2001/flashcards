@@ -7,7 +7,7 @@ function Signup() {
     const [password, setPassword] = useState('');
     const router = useRouter();
 
-    const handleSignUp = (e) => {
+    const handleSignUp = async (e) => {
         e.preventDefault();
         if (!username && !password) {
           alert("Please fill in either the username or password");
@@ -21,13 +21,25 @@ function Signup() {
           alert("Please fill in password");
           return;
         }
+        const response = await fetch('/api/CreateNewUser?username=' + username + '&password=' + password);
+        if(response.ok){
+            alert('User creation sucessful!')
+            router.push('/home'); 
+        } else {
+            if(response.status == 401){
+                alert('Username already exists')
+            } else {
+                alert('Error creating user! Please try again later')
+            }
+            return
+        }
         router.push('/'); 
       };
 
     return (
         <div>
             <header>
-                <h1>Welcome to Drop Table Team's translator</h1>
+                <h1>Welcome to Drop Table Team&apos;s translator</h1>
             </header>
             <div className="sign">
                 <h3>Sign up</h3>

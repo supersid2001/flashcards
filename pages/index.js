@@ -16,7 +16,7 @@ const Home = () => {
     useEffect(() => {
       console.log(localStorage.getItem('id'))
       if (!localStorage.getItem('id')) {
-        router.push('/login'); 
+        router.push('/home'); 
         return;
       } else {
       getData().then((translationHistory) => {
@@ -25,8 +25,8 @@ const Home = () => {
         setFlashcards(prevFlashcards => [
           ...prevFlashcards,
           ...data.translationData.map((entry, index) => ({
-            term: entry.inputText,
-            definition: entry.outputText,
+            term: entry.outputText,
+            definition: entry.inputText,
             id: index + 1, 
           })),
         ]);

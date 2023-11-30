@@ -2,12 +2,11 @@ import styles from "../styles/Home.module.css";
 
 import { useState, useEffect, useRef } from "react";
 
-
 //ADD HERE: GET NEW INPUT, ADD IT TO DB, ADD A FLASHCARD FROM OUTPUT 
 const AddFlashcard = ({ onAdd, onClose }) => {
   const [term, setTerm] = useState("");
-  const [langTo, setLangTo] = useState("");
-  const [langFrom, setLangFrom] = useState("");
+  const [langTo, setLangTo] = useState("spa");
+  const [langFrom, setLangFrom] = useState("en");
   const [image, setImage] = useState(null);
 
   const modalRef = useRef(null);
@@ -25,18 +24,22 @@ const AddFlashcard = ({ onAdd, onClose }) => {
   }, [onClose]);
 
   const  handleCreate = async () => {
+    console.log(langTo)
+    console.log(langFrom)
     if (!term && !image) {
       alert("Please fill in either the term or upload an image");
       return;
     }
     if(!langTo){
       alert("Please fill in langauge to");
-      //TODO CHECK IF VALID LANGAUGE CODE!
       return;
     }
     if(!langFrom){
       alert("Please fill in langauge from");
-      //TODO CHECK IF VALID LANGAUGE CODE!
+      return;
+    }
+    if(langTo == langFrom){
+      alert("Please select two different languages");
       return;
     }
     else if(!image){
@@ -46,12 +49,11 @@ const AddFlashcard = ({ onAdd, onClose }) => {
       fetch(link, {
         method: 'POST'
       }).then((result) => {
-        console.log(link)
         result.json().then((resJSON) => {
           console.log(resJSON)
-          var definition = resJSON.translatedText
+          var definition = resJSON.textToBeTranslated
           // onAdd(term, definition);
-          onAdd({ term: term || "", definition: definition});
+          onAdd({ term: resJSON.translatedText || "", definition: definition});
         })
       })
     } else {
@@ -67,15 +69,25 @@ const AddFlashcard = ({ onAdd, onClose }) => {
         console.log(link)
         result.json().then((resJSON) => {
           console.log(resJSON)
-          var definition = resJSON.translatedText
+          var definition = resJSON.textToBeTranslated
           // onAdd(term, definition);
-          onAdd({ term: resJSON.textToBeTranslated || "", definition: definition});
+          onAdd({ term: resJSON.translatedText || "", definition: definition});
         })
       })
     }
     setTerm("");
     setImage(null);
     onClose();
+  };
+
+  const handleLangFromChange = (e) => {
+    console.log("Selected language from:", e.target.value);
+    setLangFrom(e.target.value);
+  };
+
+  const handleLangToChange = (e) => {
+    console.log("Selected language from:", e.target.value);
+    setLangTo(e.target.value);
   };
 
   const handleImageChange = (e) => {
@@ -99,24 +111,36 @@ const AddFlashcard = ({ onAdd, onClose }) => {
         </label>
         <label className={styles.label}>
           Language to:
-          <input
+          {/* <input
             type="text"
             value={langTo}
             onChange={(e) => setLangTo(e.target.value)}
             placeholder="Enter language translating to"
             className={styles.input}
-          />
+          /> */}
+          <select id="langToSelect" onChange={handleLangToChange} value={langTo}>
+            <option value="en">English</option>
+            <option value="spa">Spanish</option>
+            <option value="de">Dutch</option>
+          </select>
         </label>
         <label className={styles.label}>
           Language from:
-          <input
+          {/* <input
             type="text"
             value={langFrom}
             onChange={(e) => setLangFrom(e.target.value)}
             placeholder="Enter language translating from"
             className={styles.input}
-          />
+          /> */}
+          <select id="langFromSelect" onChange={handleLangFromChange} value={langFrom}>
+            <option value="en">English</option>
+            <option value="spa">Spanish</option>
+            <option value="de">Dutch</option>
+          </select>
         </label>
+       
+
         <label className={styles.label}>
           Upload Image:
           <input

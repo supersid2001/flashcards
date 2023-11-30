@@ -7,7 +7,7 @@ function Signin() {
     const [password, setPassword] = useState('');
     const router = useRouter();
 
-    const handleSignIn = (e) => {
+    const handleSignIn = async (e) => {
         e.preventDefault();
         if (!username && !password) {
           alert("Please fill in either the username or password");
@@ -23,13 +23,27 @@ function Signin() {
         }
         localStorage.setItem('username', username);
         localStorage.setItem('password', password);
-        router.push('/'); 
+        const response = await fetch('/api/ValidateUser?username=' + username + '&password=' + password);
+        if(response.ok){
+            var jsonResult = await response.json()
+            localStorage.setItem('id', jsonResult.client_id)
+            router.push('/'); 
+        } else {
+            if(response.status == 404){
+                alert('Username not found')
+            } else if(response.status == 401) {
+                alert('Invalid password!')
+            } else {
+                alert('Error signing in! Please try again later')
+            }
+            return
+        }
       };
 
     return (
         <div>
             <header>
-                <h1>Welcome to Drop Table Team's translator</h1>
+                <h1>Welcome to Drop Table Team&apos;s translator</h1>
             </header>
             <div className="sign">
                 <h3>Sign in</h3>
@@ -63,7 +77,7 @@ function Signin() {
                         />
                     </div>
                     <div className="signButton">
-                        <input type="submit" value="Sign up" onClick={handleSignIn} />
+                        <input type="submit" value="Sign in" onClick={handleSignIn} />
                     </div>
                 </form>
             </div>
