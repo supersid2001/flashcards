@@ -3,6 +3,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 Originally from Sids's repository: https://github.com/supersid2001/drop_table_team_flashcards
 Which was forked from Brendan's: https://github.com/bfay1/drop_table_team_flashcards
 
+[Jump to the first team's repository](https://github.com/KeLiu-Kryie/COMSW4156-Drop_Table_Team)
+
 ## Getting Started
 
 First run 
