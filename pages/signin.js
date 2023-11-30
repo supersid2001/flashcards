@@ -77,7 +77,7 @@ function Signin() {
                         />
                     </div>
                     <div className="signButton">
-                        <input type="submit" value="Sign up" onClick={handleSignIn} />
+                        <input type="submit" value="Sign in" onClick={handleSignIn} />
                     </div>
                 </form>
             </div>
