@@ -27,15 +27,15 @@ export default async function handler(req, res) {
         method: 'POST'
       }).then(async (result) => {
           await result.json().then(async (resJSON) => {
-          console.log(resJSON)
-          var id = resJSON.message
-          const newUser = {
-            username,
-            password: passwordhash,
-            client_id: id
-          };
-          const result = await collection.insertOne(newUser);
-          res.status(201).json({ message: 'User registered successfully'});
+            console.log(resJSON)
+            var id = resJSON.message
+            const newUser = {
+              username,
+              password: passwordhash,
+              client_id: id
+            };
+            const result = await collection.insertOne(newUser);
+            res.status(201).json({ message: 'User registered successfully'});
         })
       })
     }
