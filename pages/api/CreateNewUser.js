@@ -25,8 +25,8 @@ export default async function handler(req, res) {
       const passwordhash = await bcrypt.hash(password, 10)
       await fetch("http://localhost:18080/create_client/", {
         method: 'POST'
-      }).then((result) => {
-        result.json().then(async (resJSON) => {
+      }).then(async (result) => {
+          await result.json().then(async (resJSON) => {
           console.log(resJSON)
           var id = resJSON.message
           const newUser = {
