@@ -40,7 +40,7 @@ export default async function handler(req, res) {
       })
     }
   } catch (error) {
-    console.error('Error registering user:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
+    console.error('Error registering user:', error.message);
+    res.status(500).json({ error: error.message });
   }
 }
