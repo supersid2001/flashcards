@@ -5,6 +5,8 @@ Which was forked from Brendan's: https://github.com/bfay1/drop_table_team_flashc
 
 [Jump to the first team's repository](https://github.com/KeLiu-Kryie/COMSW4156-Drop_Table_Team)
 
+NOTE: IN ORDER FOR THE FLASHCARDS TO WORK, YOU CURRENTLY NEED TO RUN THE SERVICE ON LOCALHOST WHILE YOU ALSO LOCALLY RUN THE CLIENT APP 
+
 ## Getting Started
 
 First run 
