@@ -13,6 +13,8 @@ npm install
 ```
 to install all dependencies required for the project
 
+To run the app locally, you will need to add a .env.local file with a field called "MONGODB_URI" whose value would be the mongoDB Atlas connection string. For more information look at: https://www.mongodb.com/developer/languages/javascript/nextjs-with-mongodb/
+
 Then, run the development server:
 
 ```bash
