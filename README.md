@@ -31,7 +31,7 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## NOTE: TO RUN THIS APP PROPERLY YOU WILL NEED TO FIRST RUN THE C++ SERVICE ON LOCALHOST WHIILE RUNNING THE CLIENT APP ON LOCALHOST. YOU WILL ALSO NEED TO INSTALL THE FOLLOWING CHROME EXTENSION: https://chromewebstore.google.com/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf TO ALLOW CORS (WHICH IS BLOCKED BY DEFAULT AND PREVENTS FETCHING) 
+### NOTE: TO RUN THIS APP PROPERLY YOU WILL NEED TO FIRST RUN THE C++ SERVICE ON LOCALHOST WHIILE RUNNING THE CLIENT APP ON LOCALHOST. YOU WILL ALSO NEED TO INSTALL THE FOLLOWING CHROME EXTENSION: https://chromewebstore.google.com/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf TO ALLOW CORS (WHICH IS BLOCKED BY DEFAULT AND PREVENTS FETCHING) 
 
 ## Learn More
 
