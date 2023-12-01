@@ -4,8 +4,8 @@ import bcrypt from 'bcrypt';
 //Check if username exists in DB 
 // Throw error if it does 
 // Otherwise call create_client and create new user with returned client id
-// If any error/exception, throw error (try again lol)
-// Otherwise send back 200 response 
+// If any error/exception, throw error 
+// Otherwise send back 201 response 
 
 export default async function handler(req, res) {
   try {
