@@ -23,7 +23,7 @@ export default async function handler(req, res) {
     }
     else{
       const passwordhash = await bcrypt.hash(password, 10)
-      await fetch("http://localhost:18080/create_client/", {
+      await fetch("https://droptableteam-cswavrsn5q-ue.a.run.app/create_client/", {
         method: 'POST'
       }).then(async (result) => {
           await result.json().then(async (resJSON) => {

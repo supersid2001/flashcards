@@ -9,7 +9,7 @@ const Home = () => {
   const [flashcards, setFlashcards] = useState([]);
   const router = useRouter();
     async function getData(){
-      const res = await fetch("http://localhost:18080/get_translation_history/?id=" + localStorage.getItem('id'))
+      const res = await fetch("https://droptableteam-cswavrsn5q-ue.a.run.app/get_translation_history/?id=" + localStorage.getItem('id'))
       return res.json()
     }
   

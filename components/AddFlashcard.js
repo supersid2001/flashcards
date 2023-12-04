@@ -43,7 +43,7 @@ const AddFlashcard = ({ onAdd, onClose }) => {
       return;
     }
     else if(!image){
-      var link = "http://localhost:18080/post_translation_to_client/?tbt=" + term + "&tl=" + langTo + "&fl=" + langFrom + "&id=" + localStorage.getItem('id')
+      var link = "https://droptableteam-cswavrsn5q-ue.a.run.app/post_translation_to_client/?tbt=" + term + "&tl=" + langTo + "&fl=" + langFrom + "&id=" + localStorage.getItem('id')
       fetch(link, {
         method: 'POST'
       }).then((result) => {
@@ -54,7 +54,7 @@ const AddFlashcard = ({ onAdd, onClose }) => {
         })
       })
     } else {
-      var link = "http://localhost:18080/post_image_translation/?&tl=" + langTo + "&fl=" + langFrom + "&id=" + localStorage.getItem('id')
+      var link = "https://droptableteam-cswavrsn5q-ue.a.run.app/post_image_translation/?&tl=" + langTo + "&fl=" + langFrom + "&id=" + localStorage.getItem('id')
       const formData = new FormData()
       formData.append('file', image);
       fetch(link, {
